@@ -1,0 +1,24 @@
+---
+    - name: Multi user creation
+      hosts: localhost
+      become: true
+      connection: true
+      tasks:
+              - name: Creating user
+                user:
+                    name: "{{item}}"
+                    state: present
+                loop:
+                          - abida
+                          - Sabia
+                          - Rahman
+              - name: run cat /etc/passwd
+                command: cat /etc/passwd
+                register: usrdetails
+                notify:
+                        -  showpwd
+      handlers:
+              - name: showpwd
+                debug:
+                       var:
+                               usrdetails
