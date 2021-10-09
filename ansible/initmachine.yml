@@ -1,0 +1,12 @@
+---
+  - name: Initialize machine with some basic softwae
+    hosts: localhost
+    connection: local
+    become: true 
+    tasks:
+            - name: Install tree command
+              apt: 
+                name: tree
+                state: present
+            - name: Pull data from GitHub
+              command: git pull

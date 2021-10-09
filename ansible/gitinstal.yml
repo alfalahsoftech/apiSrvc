@@ -1,0 +1,11 @@
+---
+  - name: Basic software installation by Samdani
+    hosts: localhost
+    become: true
+    connection: local
+    tasks:
+            - name: Install git
+              apt:
+                  name: git
+                  state: present
+                    

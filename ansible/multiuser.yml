@@ -1,8 +1,7 @@
 ---
     - name: Multi user creation
       hosts: localhost
-      become: true
-      connection: true
+      connection: local
       tasks:
               - name: Creating user
                 user:

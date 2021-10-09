@@ -1,0 +1,15 @@
+---
+  - name: Setup gitconfig related
+    hosts: localhost
+    connection: local
+    become: true
+    tasks:
+            - name: Configure git
+              command: "{{item}} "
+              loop:
+                      - git config --global user.name "alfalahsoftech"
+                      - git config --global user.email "alfalahsoftech@gmail.com"
+            - name: Print git configuration
+              command: git config --global --list
+              register: var_gitconfig
+            - debug: var=var_gitconfig
