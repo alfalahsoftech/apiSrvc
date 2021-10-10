@@ -1,0 +1,18 @@
+---
+  - name: Know about ansible_facts
+    hosts: localhost
+    become: true
+    connection: local
+    tasks:
+            - name: Host Name
+              debug: 
+                var: "{{item}}"
+              loop:
+                      - ansible_facts['hostname']
+                      - ansible_facts['env']['HOSTNAME']
+                      - ansible_facts['os_family']
+                      - ansible_facts['cmdline']
+                      - ansible_facts['memory_db.real']
+                      - ansible_facts['memory_db']['real']
+
+
